@@ -15,7 +15,9 @@ class DiscountServiceTest extends \PHPUnit_Framework_TestCase
     {
         /** @var DiscountService $discountService */
         $discountService = $this->getMockBuilder(DiscountService::class)->setMethods(['getConferencesRepository'])->getMock();
-
+        
+        //Usuwając ConferenceRepository z klasy DiscountService (lub pochodnych) będziemy mogli uzyskać krótszy i czytelniejszy
+        //kod testwy, bo będzie potrzebne zamokowanie tylko właściwego obiektu Conference - nie ma tutaj potrzeby na więcej.
         $conferenceRepository = $this->getMock(ConferenceRepository::class);
 
         $discountService->expects($this->once())
